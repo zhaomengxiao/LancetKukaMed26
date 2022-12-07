@@ -11,23 +11,12 @@
           <parentFrameConnection xsi:type="core:DynamicFrameConnection"/>
         </childFrames>
       </rootFrame>
-      <childObjectConnections childObjectFrame="662c8151-6dab-4920-aa7a-38cdf07ea4ec" parentObjectFrame="_8GwMsmY7Ee2AwJ_VYXOlcw">
+      <childObjectConnections childObjectFrame="c8d97054-5599-4488-9280-95c0f74a91f7" parentObjectFrame="_8GwMsmY7Ee2AwJ_VYXOlcw">
         <frameConnection xsi:type="core:StaticFrameConnection">
           <transformation/>
         </frameConnection>
-        <childObject xsi:type="core:Tool" id="6f255ba0-991e-4552-803d-fcac3ba46bc2" name="tool" clazz="com.kuka.geometry.Tool" defaultChildAttachmentFrame="662c8151-6dab-4920-aa7a-38cdf07ea4ec" defaultParentAttachmentFrame="662c8151-6dab-4920-aa7a-38cdf07ea4ec" transient="true" defaultMotionFrame="662c8151-6dab-4920-aa7a-38cdf07ea4ec">
-          <rootFrame id="662c8151-6dab-4920-aa7a-38cdf07ea4ec" name="ROOT">
-            <childFrames id="580ceff1-f125-47ae-b525-8298bf34d576" name="Flange">
-              <parentFrameConnection xsi:type="core:StaticFrameConnection">
-                <transformation/>
-              </parentFrameConnection>
-            </childFrames>
-            <childFrames id="0ad33e1f-0041-480a-b99f-8d906556a184" name="RobotEndRF_robot">
-              <parentFrameConnection xsi:type="core:StaticFrameConnection">
-                <transformation/>
-              </parentFrameConnection>
-            </childFrames>
-          </rootFrame>
+        <childObject xsi:type="core:Tool" id="fb195e72-fa08-444a-b5fb-460987ca4670" name="tool" clazz="com.kuka.geometry.Tool" defaultChildAttachmentFrame="c8d97054-5599-4488-9280-95c0f74a91f7" defaultParentAttachmentFrame="c8d97054-5599-4488-9280-95c0f74a91f7" transient="true" defaultMotionFrame="c8d97054-5599-4488-9280-95c0f74a91f7">
+          <rootFrame id="c8d97054-5599-4488-9280-95c0f74a91f7" name="ROOT"/>
           <loadData mass="0.676">
             <centerOfMass z="20.0"/>
             <inertia/>
