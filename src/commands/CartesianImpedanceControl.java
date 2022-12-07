@@ -39,10 +39,10 @@ public class CartesianImpedanceControl extends AbstractCommandEx {
     CartesianImpedanceControlMode cartImpCtrlMode =
         new CartesianImpedanceControlMode();
     
-    cartImpCtrlMode.parametrize(CartDOF.ROT).setDamping(0.7);
+    cartImpCtrlMode.parametrize(CartDOF.ROT).setDamping(210);
     cartImpCtrlMode.parametrize(CartDOF.X).setStiffness(5000);
     cartImpCtrlMode.parametrize(CartDOF.Y).setStiffness(5000);
-    cartImpCtrlMode.parametrize(CartDOF.Z).setStiffness(2000);
+    cartImpCtrlMode.parametrize(CartDOF.Z).setStiffness(5000);
     cartImpCtrlMode.setNullSpaceStiffness(100.);
     cartImpCtrlMode.setMaxPathDeviation(1500., 1500., 1500., 3., 3., 3.);
     
