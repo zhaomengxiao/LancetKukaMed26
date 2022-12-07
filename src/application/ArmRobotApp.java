@@ -20,6 +20,7 @@ import com.kuka.task.ITaskLogger;
 import com.kuka.task.RoboticsAPITask;
 import commandHandle.CommandHandler;
 import commands.AddFrame;
+import commands.CartesianImpedanceControl;
 import commands.HandGuiding;
 import commands.MovePTP;
 import commands.MoveStop;
@@ -80,6 +81,7 @@ public class ArmRobotApp extends RoboticsAPIApplication {
   @Inject private SetMotionFrame setMotionFrameCommand;
   @Inject private MoveStop moveStopCommand;
   @Inject private HandGuiding handGuidingCommand;
+  @Inject private CartesianImpedanceControl CartesianImpedanceControlCommand;
   
   private BrakeTestHandler m_brakeTest = null;
   private boolean m_stop = false;
@@ -94,6 +96,7 @@ public class ArmRobotApp extends RoboticsAPIApplication {
   private LinkedList<String> msgQueque = new LinkedList<String>();
   private ReadWriteLock msgLock = new ReentrantReadWriteLock();
   private CommandHandler m_commandHandler = new CommandHandler();
+  
   @Override
 	public void initialize() {	
     //detach all tools
@@ -506,6 +509,7 @@ public class ArmRobotApp extends RoboticsAPIApplication {
     isInitialize &= this.m_commandHandler.commandFactory.RegisterCommand(addFrameCommand);
     isInitialize &= this.m_commandHandler.commandFactory.RegisterCommand(setMotionFrameCommand);
     isInitialize &= this.m_commandHandler.commandFactory.RegisterCommand(handGuidingCommand);
+    isInitialize &= this.m_commandHandler.commandFactory.RegisterCommand(CartesianImpedanceControlCommand);
     return isInitialize;
   }
 
@@ -545,6 +549,7 @@ public class ArmRobotApp extends RoboticsAPIApplication {
     isInitialize &= this.m_commandHandler.commandProtocolFactory.registerProtocol("SetMotionFrame", new DefualtProtocol());
     isInitialize &= this.m_commandHandler.commandProtocolFactory.registerProtocol("HandGuiding", new DefualtProtocol());
     isInitialize &= this.m_commandHandler.commandProtocolFactory.registerProtocol("MoveStop", new DefualtProtocol());
+    isInitialize &= this.m_commandHandler.commandProtocolFactory.registerProtocol("CartesianImpedanceControl", new DefualtProtocol());
     return isInitialize;
   }
 }
