@@ -2,7 +2,9 @@
 <core:World xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://www.kuka.com/rapi2/geometry/core" xmlns:objectparameters="http://www.kuka.com/rapi2/objectParameters" id="_8GmbsGY7Ee2AwJ_VYXOlcw" name="World" lastModificationTime="2022-11-25T18:37:56.193+0800" defaultChildAttachmentFrame="_8Gl0oWY7Ee2AwJ_VYXOlcw" defaultParentAttachmentFrame="_8Gl0oWY7Ee2AwJ_VYXOlcw">
   <rootFrame id="_8Gl0oWY7Ee2AwJ_VYXOlcw" name="ROOT" lastModificationTime="2022-11-17T13:51:54.091+0800">
     <childFrames id="f21e9839-9fa6-4a19-8de8-52991de24c0e" name="FriDynamicFrame">
-      <parentFrameConnection xsi:type="core:DynamicFrameConnection"/>
+      <parentFrameConnection xsi:type="core:StaticFrameConnection">
+        <transformation/>
+      </parentFrameConnection>
     </childFrames>
   </rootFrame>
   <childObjectConnections childObjectFrame="_8GwMsWY7Ee2AwJ_VYXOlcw" parentObjectFrame="_8Gl0oWY7Ee2AwJ_VYXOlcw">
