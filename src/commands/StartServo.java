@@ -94,11 +94,11 @@ public class StartServo extends AbstractCommandEx {
         // Update the runtime information with the latest robot status
         //m_theSmartServoRuntime.updateWithRealtimeSystem();
 
-        //m_theSmartServoRuntime.setDestination(destFrame);
+        m_theSmartServoRuntime.setDestination(destFrame);
 
         //printDebugData();
         ThreadUtil.milliSleep(1000);
-        m_continue = false;
+        //m_continue = false;
       }
     } catch (Exception e) {
       logger.error(e.toString());
