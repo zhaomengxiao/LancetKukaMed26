@@ -105,12 +105,12 @@ public class ArmRobotApp extends RoboticsAPIApplication {
     //clean frames in world
     
 		//mastering = new Mastering(robot);
-		ITransformation tans = Transformation.ofDeg(0, 0, 20, 0, 0, 0);
+		ITransformation tans = Transformation.ofDeg(-8.06, -28.07, 90.56, 0, 0, 0);
 		
 		//create default tool and attach to flange
 		LoadData loadRobot =  new LoadData();
 		loadRobot.setCenterOfMass(tans);
-		loadRobot.setMass(0.676);
+		loadRobot.setMass(2.37);
 		tool = new Tool("tool", loadRobot);
 		logger.info(tool.getLoadData().toString());
 		tool.attachTo(robot.getFlange());  
