@@ -74,7 +74,7 @@ public class StartServo extends AbstractCommandEx {
     //start fri session so that friDynamicFrame will be update
     friManager.startFriSession();
 
-    try {
+    
       while (m_continue) {
         //get visual servoing frame(processed ndi data) from friManager
         //Frame destFrame = friManager.GetFriDynamicFrame();
@@ -82,16 +82,16 @@ public class StartServo extends AbstractCommandEx {
         Frame destFrame = initialPos;
         destFrame.translate(offset.getTransformationFromParent().getTranslation());
         // Update the runtime information with the latest robot status
-        m_theSmartServoRuntime.updateWithRealtimeSystem();
-
-        m_theSmartServoRuntime.setDestination(destFrame);
-
-        printDebugData();
+        //m_theSmartServoRuntime.updateWithRealtimeSystem();
+        try {
+          m_theSmartServoRuntime.setDestination(destFrame);
+        } catch (Exception e) {
+        logger.error(e.toString());
+        //e.printStackTrace();
       }
-    } catch (Exception e) {
-      logger.error(e.toString());
-      e.printStackTrace();
-    }
+        //printDebugData();
+      }
+    
 
     // Print statistics and parameters of the motion
     logger.info("Displaying final states after loop ");
