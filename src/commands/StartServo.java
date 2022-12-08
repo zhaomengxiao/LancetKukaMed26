@@ -82,7 +82,8 @@ public class StartServo extends AbstractCommandEx {
         
         logger.info("initialPos");
         logger.info(initialPos.toString());
-        Frame destFrame = initialPos;
+        
+        Frame destFrame = LocalFrame.copyOfWithRedundancy(initialPos, initialPos.getParent());
         
         Vector3D v = offset.getTransformationFromParent().getTranslation();
         destFrame.translate(v);
@@ -97,7 +98,7 @@ public class StartServo extends AbstractCommandEx {
 
         //printDebugData();
         ThreadUtil.milliSleep(1000);
-        //m_continue = false;
+        m_continue = false;
       }
     } catch (Exception e) {
       logger.error(e.toString());
