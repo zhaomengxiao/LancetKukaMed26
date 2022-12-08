@@ -77,7 +77,7 @@ public class BackgroundTask extends RoboticsAPICyclicBackgroundTask {
     try {
       tool = (Tool)robot.findObject("tool");
     } catch (Exception e) {
-      logger.info("no tool attached yet,return flange position");
+      logger.info("cant find tool");
       //e.printStackTrace();
     }
     if (tool == null) {

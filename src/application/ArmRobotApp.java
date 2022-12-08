@@ -20,12 +20,13 @@ import com.kuka.task.ITaskLogger;
 import com.kuka.task.RoboticsAPITask;
 import commandHandle.CommandHandler;
 import commands.AddFrame;
-import commands.CartesianImpedanceControl;
 import commands.HandGuiding;
 import commands.MovePTP;
 import commands.MoveStop;
 import commands.SetMotionFrame;
+import commands.StartServo;
 import commands.Test;
+import functions.FriManager;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -73,6 +74,7 @@ public class ArmRobotApp extends RoboticsAPIApplication {
   @Inject private IApplicationUI appUI;
   @Inject private IApplicationControl appControl;
   @Inject private ObserverManager observerManager;
+  @Inject private FriManager friManager;
   
   //inject all available command
   @Inject private Test testCommand;
@@ -81,7 +83,7 @@ public class ArmRobotApp extends RoboticsAPIApplication {
   @Inject private SetMotionFrame setMotionFrameCommand;
   @Inject private MoveStop moveStopCommand;
   @Inject private HandGuiding handGuidingCommand;
-  @Inject private CartesianImpedanceControl CartesianImpedanceControlCommand;
+  @Inject private StartServo startServoCommand;
   
   private BrakeTestHandler m_brakeTest = null;
   private boolean m_stop = false;
@@ -96,7 +98,6 @@ public class ArmRobotApp extends RoboticsAPIApplication {
   private LinkedList<String> msgQueque = new LinkedList<String>();
   private ReadWriteLock msgLock = new ReentrantReadWriteLock();
   private CommandHandler m_commandHandler = new CommandHandler();
-  
   @Override
 	public void initialize() {	
     //detach all tools
@@ -113,6 +114,9 @@ public class ArmRobotApp extends RoboticsAPIApplication {
 		tool = new Tool("tool", loadRobot);
 		logger.info(tool.getLoadData().toString());
 		tool.attachTo(robot.getFlange());  
+		
+		friManager.setClientName("172.31.1.148");
+		friManager.initialize();
 		
 		//initialize commandHandle
 		this.initializeCommandHandle();
@@ -509,7 +513,7 @@ public class ArmRobotApp extends RoboticsAPIApplication {
     isInitialize &= this.m_commandHandler.commandFactory.RegisterCommand(addFrameCommand);
     isInitialize &= this.m_commandHandler.commandFactory.RegisterCommand(setMotionFrameCommand);
     isInitialize &= this.m_commandHandler.commandFactory.RegisterCommand(handGuidingCommand);
-    isInitialize &= this.m_commandHandler.commandFactory.RegisterCommand(CartesianImpedanceControlCommand);
+    isInitialize &= this.m_commandHandler.commandFactory.RegisterCommand(startServoCommand);
     return isInitialize;
   }
 
@@ -549,7 +553,7 @@ public class ArmRobotApp extends RoboticsAPIApplication {
     isInitialize &= this.m_commandHandler.commandProtocolFactory.registerProtocol("SetMotionFrame", new DefualtProtocol());
     isInitialize &= this.m_commandHandler.commandProtocolFactory.registerProtocol("HandGuiding", new DefualtProtocol());
     isInitialize &= this.m_commandHandler.commandProtocolFactory.registerProtocol("MoveStop", new DefualtProtocol());
-    isInitialize &= this.m_commandHandler.commandProtocolFactory.registerProtocol("CartesianImpedanceControl", new DefualtProtocol());
+    isInitialize &= this.m_commandHandler.commandProtocolFactory.registerProtocol("StartServo", new DefualtProtocol());
     return isInitialize;
   }
 }
